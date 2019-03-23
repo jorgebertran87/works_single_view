@@ -1,4 +1,5 @@
 import unittest
+from core.domain.id import Id
 
 
 class TestId(unittest.TestCase):
