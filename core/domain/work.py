@@ -1,13 +1,17 @@
+from .title import Title
+from .iswc import Iswc
+from .source import Source
+from .id import Id
 
 class Work:
 
-    _title: str
+    _title: Title
     _contributors: list
-    _iswc: str
-    _source: str
-    _id: int
+    _iswc: Iswc
+    _source: Source
+    _id: Id
 
-    def __init__(self, title: str, contributors: list, iswc: str, source: str, id: int):
+    def __init__(self, title: Title, contributors: list, iswc: Iswc, source: Source, id: Id):
         self._title = title
         self._contributors = contributors
         self._iswc = iswc
