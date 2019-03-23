@@ -13,7 +13,8 @@ class TestSource(unittest.TestCase):
         self._source = Source(self.VALUE)
 
     def testItReturnsValidSource(self):
-        self.assertEqual(self._source.__class__.__name__, self.SOURCE_CLASSNAME)
+        self.assertEqual(self._source.__class__.__name__,
+                         self.SOURCE_CLASSNAME)
 
     def testItReturnsValidSourceValue(self):
         self.assertEqual(self.VALUE, self._source.value())

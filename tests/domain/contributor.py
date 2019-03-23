@@ -1,4 +1,5 @@
 import unittest
+from core.domain.contributor import Contributor
 
 
 class TestContributor(unittest.TestCase):
@@ -12,7 +13,8 @@ class TestContributor(unittest.TestCase):
         self._contributor = Contributor(self.NAME)
 
     def testItReturnsValidContributor(self):
-        self.assertEqual(self._contributor.__class__.__name__, self.CONTRIBUTOR_CLASSNAME)
+        self.assertEqual(self._contributor.__class__.__name__,
+                         self.CONTRIBUTOR_CLASSNAME)
 
     def testItReturnsValidContributorName(self):
         self.assertEqual(self.NAME, self._contributor.name())
