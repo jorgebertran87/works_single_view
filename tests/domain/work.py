@@ -26,7 +26,6 @@ class TestWork (unittest.TestCase):
         id = Id(self.ID)
         contributor = Contributor(self.CONTRIBUTOR)
 
-
         self._work = Work(title, [contributor], iswc,  source, id)
 
     def testItReturnsValidWork(self):
@@ -46,4 +45,4 @@ class TestWork (unittest.TestCase):
 
     def testItReturnsValidWorkContributor(self):
         contributors = self._work.contributors()
-        self.assertEqual(self.CONTRIBUTOR, contributors[0].name())    
+        self.assertEqual(self.CONTRIBUTOR, contributors[0].name())

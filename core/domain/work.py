@@ -3,6 +3,7 @@ from .iswc import Iswc
 from .source import Source
 from .id import Id
 
+
 class Work:
 
     _title: Title
