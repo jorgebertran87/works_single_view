@@ -1,4 +1,5 @@
 import unittest
+from core.domain.title import Title
 
 
 class TestTitle (unittest.TestCase):

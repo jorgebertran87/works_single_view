@@ -2,7 +2,7 @@ import unittest
 from core.domain.work import Work
 
 
-class TestWorks (unittest.TestCase):
+class TestWork (unittest.TestCase):
 
     TITLE = 'Title 1'
     ISWC = 'iswc'
