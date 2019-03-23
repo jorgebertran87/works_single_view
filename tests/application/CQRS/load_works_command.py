@@ -1,12 +1,10 @@
 import unittest
-from tests.stubs.work_repository_stub import WorkRepositoryStub
 from core.application.CQRS.load_works_command import LoadWorksCommand
 
 
 class TestLoadWorksCommand(unittest.TestCase):
 
     COMMAND_CLASSNAME = 'LoadWorksCommand'
-    WORK_REPOSITORY_CLASSNAME = 'WorkRepositoryStub'
 
     _command = None
 

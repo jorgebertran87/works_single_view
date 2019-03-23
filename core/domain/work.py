@@ -33,3 +33,6 @@ class Work:
 
     def id(self):
         return self._id
+
+    def equals(work):
+        return self._id.equals(work.id())

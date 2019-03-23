@@ -6,3 +6,6 @@ class Id:
 
     def value(self):
         return self._value
+
+    def equals(id):
+        return self._value == id.value()
