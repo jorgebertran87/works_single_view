@@ -1,17 +1,18 @@
 import unittest
+from tests.stubs.work_repository_stub import WorkRepositoryStub
+from core.application.CQRS.load_works_command import LoadWorksCommand
 
 
 class TestLoadWorksCommand(unittest.TestCase):
 
     COMMAND_CLASSNAME = 'LoadWorksCommand'
-    WORK_REPOSITORY_CLASSNAME = 'WorkRepository'
+    WORK_REPOSITORY_CLASSNAME = 'WorkRepositoryStub'
 
     _command = None
 
     def setUp(self):
         works = []
-        workRepository = WorkRepository()
-        _command = LoadWorksCommand(works, workRepository)
+        self._command = LoadWorksCommand(works)
 
     def testItReturnsValidCommand(self):
         self.assertEqual(self._command.__class__.__name__,
@@ -19,7 +20,3 @@ class TestLoadWorksCommand(unittest.TestCase):
 
     def testItReturnsValidCommandWorks(self):
         self.assertEqual(0, len(self._command.works()))
-
-    def testItReturnsValidCommandWorkRepository(self):
-        self.assertEqual(self.WORK_REPOSITORY_CLASSNAME,
-                         self._command.workRepository().__class__.__name__)
