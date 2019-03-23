@@ -1,4 +1,5 @@
 import unittest
+from core.domain.source import Source
 
 
 class TestSource(unittest.TestCase):
