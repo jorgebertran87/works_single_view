@@ -1,9 +1,10 @@
 import unittest
+from core.domain.iswc import Iswc
 
 
 class TestIswc (unittest.TestCase):
 
-    VALUE = 'Iwsc'
+    VALUE = 'Iswc'
     ISWC_CLASSNAME = 'Iswc'
 
     _iswc = None
