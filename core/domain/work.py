@@ -34,5 +34,5 @@ class Work:
     def id(self):
         return self._id
 
-    def equals(work):
+    def equals(self, work):
         return self._id.equals(work.id())

@@ -7,5 +7,5 @@ class Id:
     def value(self):
         return self._value
 
-    def equals(id):
+    def equals(self, id):
         return self._value == id.value()
