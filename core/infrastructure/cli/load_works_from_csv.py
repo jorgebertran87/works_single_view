@@ -3,6 +3,7 @@ from core.application.CQRS.load_works_command import LoadWorksCommand
 from core.application.CQRS.load_works_command_handler import LoadWorksCommandHandler
 import csv
 
+
 class LoadWorksFromCSV:
 
     _works: list
@@ -10,7 +11,7 @@ class LoadWorksFromCSV:
 
     def __init__(self, csvPath: str, workRepository: WorkRepository):
         self._works = []
-        
+
         csvFile = open(csvPath)
 
         inputFile = csv.DictReader(csvFile)
@@ -18,7 +19,7 @@ class LoadWorksFromCSV:
         for work in inputFile:
             self._works.append(work)
 
-        csvFile.close()    
+        csvFile.close()
 
         self._workRepository = workRepository
 
