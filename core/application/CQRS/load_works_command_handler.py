@@ -17,7 +17,7 @@ class LoadWorksCommandHandler:
 
     def handle(self, command: LoadWorksCommand):
         works = command.works()
-        
+
         for i in range(len(works)):
             rawWork = works[i]
             work = self.createWork(rawWork)
