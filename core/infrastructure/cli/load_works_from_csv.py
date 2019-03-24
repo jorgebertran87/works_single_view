@@ -22,8 +22,6 @@ class LoadWorksFromCSV:
 
         self._workRepository = workRepository
 
-
-
     def execute(self):
         loadWorksCommand = LoadWorksCommand(self._works)
         loadWorksCommandHandler = LoadWorksCommandHandler(self._workRepository)
