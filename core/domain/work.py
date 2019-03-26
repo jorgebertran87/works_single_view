@@ -35,4 +35,7 @@ class Work:
         return self._id
 
     def equals(self, work):
-        return self._id.equals(work.id())
+        return self._iswc.equals(work.iswc())
+
+    def hasIswc(self):
+    		return self.iswc().value() != ""    

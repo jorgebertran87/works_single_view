@@ -1,6 +1,7 @@
 import abc
 from core.domain.work import Work
-from core.domain.id import Id
+from core.domain.iswc import Iswc
+from core.domain.title import Title
 
 
 class WorkRepository(abc.ABC):
@@ -18,5 +19,9 @@ class WorkRepository(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def findById(self, id: Id):
+    def findByIswc(self, iswc: Iswc):
         pass
+
+    @abc.abstractmethod
+    def findByTitleAndContributors(self, title: Title, contributors: list):
+        pass    

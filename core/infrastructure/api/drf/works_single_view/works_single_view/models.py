@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Contributors(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, primary_key=True)
 
     class Meta:
         db_table = "contributors"
