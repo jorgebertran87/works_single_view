@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '75u3+a9h(nmqi9y417urg25juewgxch3@#1a%+-0v1f88&x0%t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '172.30.0.2']
+ALLOWED_HOSTS = ['127.0.0.1', '172.30.0.2', 'localhost']
 
 
 # Application definition
@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'works_single_view.works_single_view'
+    'works_single_view.works_single_view',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -117,6 +118,12 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/

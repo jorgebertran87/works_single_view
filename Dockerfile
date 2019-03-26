@@ -1,10 +1,20 @@
-from python:3.7-alpine
+# Below are the dependencies required for installing the common combination of numpy, scipy, pandas and matplotlib 
+# in an Alpine based Docker image.
 
-RUN apk update \
-    && apk add libpq postgresql-dev \
-    && apk add build-base
+FROM alpine:3.7
 
-RUN pip3 install click django djangorestframework psycopg2-binary
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.7/community" >> /etc/apk/repositories
+
+RUN apk --no-cache --update-cache add libgfortran 
+
+RUN apk --no-cache --update-cache add gcc gfortran python python3 python-dev python3-dev py-pip build-base wget freetype-dev libpng-dev  openblas-dev libpq postgresql-dev
+
+RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
+
+RUN apk update && apk add libpq postgresql-dev
+    
+
+RUN pip3 install click django djangorestframework psycopg2-binary numpy rest-pandas
 
 COPY . /usr/src/app
 
@@ -13,5 +23,3 @@ WORKDIR /usr/src/app
 RUN ln -s core/infrastructure/api/drf/manage.py manage.py
 
 EXPOSE 8990
-
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8990"]

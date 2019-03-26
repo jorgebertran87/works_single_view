@@ -1,5 +1,5 @@
 from core.application.repositories.work_repository import WorkRepository
-from core.infrastructure.api.drf.works_single_view.works_single_view.models import Works
+from core.infrastructure.api.drf.works_single_view.works_single_view.models import Works, Contributors
 from core.domain.work import Work
 from core.domain.id import Id
 from core.domain.title import Title
@@ -16,7 +16,14 @@ class DjangoWorkRepository(WorkRepository):
         worksModel.title = work.title().value()
         worksModel.iswc = work.iswc().value()
         worksModel.source = work.source().value()
+        worksModel.contributors.clear()
         worksModel.save()
+
+        for contributor in work.contributors():
+            contributorsModel = Contributors()
+            contributorsModel.name = contributor.name()
+            contributorsModel.save()
+            worksModel.contributors.add(contributorsModel)
 
     def update(self, updatedWork: Work):
         pass
