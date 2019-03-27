@@ -8,4 +8,4 @@ class Title:
         return self._value
 
     def equals(self, title):
-        return self._value == title.value()    
+        return self._value == title.value()

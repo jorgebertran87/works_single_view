@@ -25,9 +25,11 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.CharField(max_length=50)),
                 ('title', models.CharField(max_length=255)),
-                ('iswc', models.CharField(max_length=255, primary_key=True, serialize=False)),
+                ('iswc', models.CharField(max_length=255,
+                                          primary_key=True, serialize=False)),
                 ('source', models.CharField(max_length=255)),
-                ('contributors', models.ManyToManyField(to='works_single_view.Contributors')),
+                ('contributors', models.ManyToManyField(
+                    to='works_single_view.Contributors')),
             ],
             options={
                 'db_table': 'works',

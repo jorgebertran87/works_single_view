@@ -5,7 +5,6 @@ from rest_framework import serializers
 class WorksForCsvSerializer(serializers.ModelSerializer):
     contributors = serializers.SerializerMethodField()
 
-
     class Meta:
         model = Works
         fields = ('id', 'title', 'iswc', 'source', 'contributors')
@@ -17,9 +16,9 @@ class WorksForCsvSerializer(serializers.ModelSerializer):
 
         return "|".join(contributors)
 
+
 class WorksSerializer(serializers.ModelSerializer):
     contributors = serializers.SerializerMethodField()
-
 
     class Meta:
         model = Works
@@ -30,4 +29,4 @@ class WorksSerializer(serializers.ModelSerializer):
         for contributor in works.contributors.all():
             contributors.append(contributor.name)
 
-        return contributors       
+        return contributors

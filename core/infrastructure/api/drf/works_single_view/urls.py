@@ -1,3 +1,4 @@
+from rest_framework.urlpatterns import format_suffix_patterns
 """works_single_view URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -29,9 +30,8 @@ urlpatterns = [
 ]
 
 # This is only required to support extension-style formats (e.g. /data.csv)
-from rest_framework.urlpatterns import format_suffix_patterns
 urlpatterns = format_suffix_patterns(urlpatterns)
 
 urlpatterns += [
-		path('', include(router.urls)),
+    path('', include(router.urls)),
 ]

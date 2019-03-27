@@ -24,4 +24,4 @@ class WorkRepository(abc.ABC):
 
     @abc.abstractmethod
     def findByTitleAndContributors(self, title: Title, contributors: list):
-        pass    
+        pass

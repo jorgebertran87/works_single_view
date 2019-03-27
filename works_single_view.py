@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+from core.infrastructure.api.drf.works_single_view.works_single_view.repositories import DjangoWorkRepository
+from core.infrastructure.cli.get_works import GetWorks
+from core.infrastructure.cli.load_works_from_csv import LoadWorksFromCSV
+import click
 import os
 import django
 from core.infrastructure.api.drf.works_single_view import settings
@@ -11,10 +15,6 @@ settings.INSTALLED_APPS.remove('works_single_view.works_single_view')
 settings.INSTALLED_APPS += ('core',)
 
 django.setup()
-
-import click
-from core.infrastructure.cli.load_works_from_csv import LoadWorksFromCSV
-from core.infrastructure.api.drf.works_single_view.works_single_view.repositories import DjangoWorkRepository
 
 
 @click.command()
@@ -33,7 +33,8 @@ def launcher(cmd: str, csv: str):
 
     if cmd == 'get_works':
         print('Getting works...')
-        works = workRepository.all()
+        query = GetWorks(workRepository)
+        works = query.execute()
 
         for work in works:
             print('-------------------')
@@ -42,8 +43,14 @@ def launcher(cmd: str, csv: str):
             print('Iswc: ' + work.iswc().value())
             print('Title: ' + work.title().value())
             print('Source: ' + work.source().value())
+
+            contributors = []
+            for contributor in work.contributors():
+                contributors.append(contributor.name())
+
+            print('Contributors: ' + "|".join(contributors))
             print('')
-            
+
 
 if __name__ == '__main__':
     launcher()

@@ -30,11 +30,10 @@ class WorkRepositoryStub(WorkRepository):
 
         return None
 
-    
     def findByTitleAndContributors(self, title: Title, contributors: list):
         for i in range(len(self._works)):
             work = self._works[i]
             if work.title().equals(title):
                 return work
 
-        return None    
+        return None

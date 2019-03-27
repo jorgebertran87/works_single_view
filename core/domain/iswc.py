@@ -8,4 +8,4 @@ class Iswc:
         return self._value
 
     def equals(self, iswc):
-        return self._value == iswc.value()    
+        return self._value == iswc.value()

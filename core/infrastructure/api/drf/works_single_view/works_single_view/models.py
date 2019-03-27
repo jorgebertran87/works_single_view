@@ -16,4 +16,4 @@ class Works(models.Model):
     source = models.CharField(max_length=255)
 
     class Meta:
-        db_table = "works"    
+        db_table = "works"

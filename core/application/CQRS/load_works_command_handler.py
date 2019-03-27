@@ -26,7 +26,7 @@ class LoadWorksCommandHandler:
 
     def createWork(self, rawWork):
         title = Title(rawWork['title'])
-        
+
         contributorsList = rawWork['contributors'].split('|')
         contributors = []
 

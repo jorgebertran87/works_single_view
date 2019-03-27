@@ -38,4 +38,4 @@ class Work:
         return self._iswc.equals(work.iswc())
 
     def hasIswc(self):
-    		return self.iswc().value() != ""    
+        return self.iswc().value() != ""

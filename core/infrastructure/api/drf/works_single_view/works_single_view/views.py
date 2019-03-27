@@ -11,10 +11,8 @@ class WorksSingleViewViewSet(viewsets.ModelViewSet):
     queryset = Works.objects.all()
     serializer_class = WorksSerializer
 
+
 class ExportWorksSingleViewView(PandasView):
 
     queryset = Works.objects.all()
-    serializer_class = WorksForCsvSerializer    
-
-
-
+    serializer_class = WorksForCsvSerializer

@@ -19,7 +19,6 @@ class DjangoWorkRepository(WorkRepository):
             contributorsModel.save()
             contributors.append(contributorsModel)
 
-
         worksModel = self.reconcile(work, contributors)
 
         if worksModel is None:
@@ -30,40 +29,36 @@ class DjangoWorkRepository(WorkRepository):
 
         self.addContributorsToWork(worksModel, contributors)
 
-
     def reconcile(self, work: Work, contributors: list):
         worksModel = self.findByIswc(work.iswc())
 
         if worksModel is None:
-            worksModel = self.findByTitleAndContributors(work.title(), contributors)
-
-
+            worksModel = self.findByTitleAndContributors(
+                work.title(), contributors)
 
         if worksModel is None:
-            
-            if not work.hasIswc():
-                return None 
 
-            worksModel = Works()         
+            if not work.hasIswc():
+                return None
+
+            worksModel = Works()
 
         worksModel.id = work.id().value()
         worksModel.title = work.title().value()
-        
+
         if work.hasIswc():
             worksModel.iswc = work.iswc().value()
 
-        worksModel.source = work.source().value()    
+        worksModel.source = work.source().value()
 
         return worksModel
-
-
 
     def addContributorsToWork(self, worksModel, contributors: list):
         for contributor in contributors:
             worksModel.contributors.add(contributor)
 
     def update(self, updatedWork: Work):
-        pass        
+        pass
 
     def all(self):
         worksModels = Works.objects.all()
@@ -71,7 +66,14 @@ class DjangoWorkRepository(WorkRepository):
 
         for worksModel in worksModels:
             title = Title(worksModel.title)
+
             contributors = []
+            contributorsModel = worksModel.contributors.all()
+
+            for contributorModel in contributorsModel:
+                contributor = Contributor(contributorModel.name)
+                contributors.append(contributor)
+
             iswc = Iswc(worksModel.iswc)
             source = Source(worksModel.source)
             id = Id(worksModel.id)
@@ -84,4 +86,4 @@ class DjangoWorkRepository(WorkRepository):
         return Works.objects.filter(pk=iswc.value()).first()
 
     def findByTitleAndContributors(self, title: Title, contributors: list):
-        return Works.objects.filter(title=title.value(), contributors__in=contributors) .first()   
+        return Works.objects.filter(title=title.value(), contributors__in=contributors) .first()

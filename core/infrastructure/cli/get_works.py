@@ -7,7 +7,7 @@ class GetWorks:
 
     _workRepository: WorkRepository
 
-    def __init__(self, csvPath: str, workRepository: WorkRepository):
+    def __init__(self, workRepository: WorkRepository):
         self._workRepository = workRepository
 
     def execute(self):
