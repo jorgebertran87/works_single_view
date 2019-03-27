@@ -16,6 +16,10 @@ RUN apk update && apk add libpq postgresql-dev
 
 RUN pip3 install click django djangorestframework psycopg2-binary numpy rest-pandas
 
+# I add a new line because rest-pandas 
+# takes more than 15 minutes to be installed...
+RUN pip3 install coverage
+
 COPY . /usr/src/app
 
 WORKDIR /usr/src/app

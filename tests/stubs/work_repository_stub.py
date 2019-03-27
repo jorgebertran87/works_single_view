@@ -1,6 +1,7 @@
 from core.application.repositories.work_repository import WorkRepository
 from core.domain.work import Work
-from core.domain.id import Id
+from core.domain.iswc import Iswc
+from core.domain.title import Title
 
 
 class WorkRepositoryStub(WorkRepository):
@@ -21,10 +22,19 @@ class WorkRepositoryStub(WorkRepository):
     def all(self):
         return self._works
 
-    def findById(self, id: Id):
+    def findByIswc(self, iswc: Iswc):
         for i in range(len(self._works)):
             work = self._works[i]
-            if work.id().equals(id):
+            if work.iswc().equals(iswc):
                 return work
 
         return None
+
+    
+    def findByTitleAndContributors(self, title: Title, contributors: list):
+        for i in range(len(self._works)):
+            work = self._works[i]
+            if work.title().equals(title):
+                return work
+
+        return None    

@@ -6,3 +6,6 @@ class Title:
 
     def value(self):
         return self._value
+
+    def equals(self, title):
+        return self._value == title.value()    
